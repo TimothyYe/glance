@@ -4,13 +4,20 @@ import (
 	ui "github.com/gizak/termui/v3"
 )
 
+var (
+	showBorder   = false
+	showHelp     = false
+	showProgress = false
+	bossKey      = false
+)
+
 func updateParagraph(key string) {
 	p.Text = key
 }
 
 func setBorder() {
-	border = !border
-	p.Border = border
+	showBorder = !showBorder
+	p.Border = showBorder
 }
 
 func HandleEvents() {
@@ -38,10 +45,15 @@ func HandleEvents() {
 		case "q", "<C-c>":
 			// quit
 			return
-		case "j", "k", "<C-n>", "<C-p>":
-			// switch content
+		case "j", "<C-n>":
+			// show next content
 			updateParagraph(e.ID)
 			ui.Render(p)
+		case "k", "<C-p":
+			// show previous content
+			updateParagraph(e.ID)
+			ui.Render(p)
+			return
 		}
 	}
 }
