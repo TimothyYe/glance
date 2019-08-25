@@ -39,6 +39,7 @@ func HandleEvents() {
 			ui.Render(p)
 		case "b":
 			// boss key
+			bossKey = !bossKey
 			p.Border = false
 			p.Text = "[root@localhost]$"
 			ui.Render(p)
