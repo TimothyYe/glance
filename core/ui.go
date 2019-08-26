@@ -12,12 +12,14 @@ var (
 	p *widgets.Paragraph
 )
 
+// Init ui & components
 func Init() {
 	if err := ui.Init(); err != nil {
 		log.Fatalf("failed to initialize termui: %v", err)
 	}
 
-	width, height := ui.TerminalDimensions()
+	_, height := ui.TerminalDimensions()
+	width := 80
 
 	p = widgets.NewParagraph()
 	p.Text = fmt.Sprintf("%d,%d", width, height)

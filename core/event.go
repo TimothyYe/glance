@@ -20,6 +20,7 @@ func setBorder() {
 	p.Border = showBorder
 }
 
+// HandleEvents handles all the keyboard events
 func HandleEvents() {
 	uiEvents := ui.PollEvents()
 	defer ui.Close()
