@@ -15,9 +15,37 @@ func updateParagraph(key string) {
 	p.Text = key
 }
 
-func setBorder() {
+func displayHelp() {
+	showHelp = !showHelp
+	if showHelp {
+		p.Text = "[↑]:j [↓]:k [b]:Boss Key [g]:Show/Hide Grid, [q]:Quit"
+	} else {
+		p.Text = ""
+	}
+}
+
+func displayBorder() {
 	showBorder = !showBorder
 	p.Border = showBorder
+}
+
+func displayProgress() {
+	showProgress = !showProgress
+	if showProgress {
+		p.Text = "(10/99)"
+	} else {
+		p.Text = ""
+	}
+}
+
+func displayBossKey() {
+	bossKey = !bossKey
+	if bossKey {
+		p.Border = false
+		p.Text = "[root@localhost]$"
+	} else {
+		p.Text = ""
+	}
 }
 
 // HandleEvents handles all the keyboard events
@@ -30,32 +58,27 @@ func HandleEvents() {
 		switch e.ID {
 		case "?":
 			// show help menu
-			updateParagraph("[↑]:j [↓]:k [b]:Boss Key [g]:Show/Hide Grid, [q]:Quit")
-			ui.Render(p)
+			displayHelp()
 		case "p":
 			// show progress
+			displayProgress()
 		case "f":
 			// show border
-			setBorder()
-			ui.Render(p)
+			displayBorder()
 		case "b":
 			// boss key
-			bossKey = !bossKey
-			p.Border = false
-			p.Text = "[root@localhost]$"
-			ui.Render(p)
+			displayBossKey()
 		case "q", "<C-c>":
 			// quit
 			return
 		case "j", "<C-n>":
 			// show next content
 			updateParagraph(e.ID)
-			ui.Render(p)
-		case "k", "<C-p":
+		case "k", "<C-p>":
 			// show previous content
 			updateParagraph(e.ID)
-			ui.Render(p)
-			return
 		}
+
+		ui.Render(p)
 	}
 }
