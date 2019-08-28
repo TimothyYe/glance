@@ -2,10 +2,10 @@ package reader
 
 import (
 	"bufio"
+	"bytes"
 	"fmt"
 	"os"
 	"os/exec"
-	"strings"
 )
 
 type TxtReader struct {
@@ -33,21 +33,26 @@ func (txt *TxtReader) Load(path string) error {
 		return err
 	}
 
-	r := bufio.NewReader(stdout)
-	for {
-		line, isPrefix, err := r.ReadLine()
-		if err != nil {
-			break
+	r := bufio.NewScanner(stdout)
+	r.Split(bufio.ScanRunes)
+	buffer := bytes.NewBuffer(make([]byte, 0))
+
+	for r.Scan() {
+		line := r.Text()
+		if line == "\r" {
+			continue
 		}
 
-		fmt.Println("isPrefix:", isPrefix)
-
-		if string(line) != "" && strings.TrimSpace(string(line)) != "" && string(line) != "\r\n" {
-			txt.content = append(txt.content, string(line))
+		if line == "\n" {
+			if buffer.Len() > 0 {
+				txt.content = append(txt.content, buffer.String())
+				buffer.Reset()
+			}
+		} else {
+			buffer.Write(r.Bytes())
 		}
 	}
 
-	fmt.Println("there are total lines:", len(txt.content))
 	txt.pos = 0
 	return nil
 }
