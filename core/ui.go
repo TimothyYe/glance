@@ -4,22 +4,26 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/TimothyYe/glance/reader"
 	ui "github.com/gizak/termui/v3"
 	"github.com/gizak/termui/v3/widgets"
 )
 
 var (
 	p *widgets.Paragraph
+	r reader.GeneralReader
 )
 
 // Init ui & components
-func Init() {
+func Init(gr reader.GeneralReader) {
+	r = gr
+
 	if err := ui.Init(); err != nil {
 		log.Fatalf("failed to initialize termui: %v", err)
 	}
 
 	_, height := ui.TerminalDimensions()
-	width := 80
+	width := 83
 
 	p = widgets.NewParagraph()
 	p.Text = fmt.Sprintf("%d,%d", width, height)
@@ -29,4 +33,5 @@ func Init() {
 	p.Border = showBorder
 
 	ui.Render(p)
+	handleEvents()
 }

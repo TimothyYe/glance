@@ -15,12 +15,12 @@ func updateParagraph(key string) {
 	p.Text = key
 }
 
-func displayHelp() {
+func displayHelp(current string) {
 	showHelp = !showHelp
 	if showHelp {
 		p.Text = "[↑]:j [↓]:k [b]:Boss Key [g]:Show/Hide Grid, [q]:Quit"
 	} else {
-		p.Text = ""
+		p.Text = current
 	}
 }
 
@@ -29,12 +29,12 @@ func displayBorder() {
 	p.Border = showBorder
 }
 
-func displayProgress() {
+func displayProgress(current, progress string) {
 	showProgress = !showProgress
 	if showProgress {
-		p.Text = "(10/99)"
+		p.Text = progress
 	} else {
-		p.Text = ""
+		p.Text = current
 	}
 }
 
@@ -48,8 +48,8 @@ func displayBossKey() {
 	}
 }
 
-// HandleEvents handles all the keyboard events
-func HandleEvents() {
+// handleEvents handles all the keyboard events
+func handleEvents() {
 	uiEvents := ui.PollEvents()
 	defer ui.Close()
 
@@ -58,10 +58,10 @@ func HandleEvents() {
 		switch e.ID {
 		case "?":
 			// show help menu
-			displayHelp()
+			displayHelp(r.Current())
 		case "p":
 			// show progress
-			displayProgress()
+			displayProgress(r.Current(), r.GetProgress())
 		case "f":
 			// show border
 			displayBorder()
@@ -73,10 +73,10 @@ func HandleEvents() {
 			return
 		case "j", "<C-n>":
 			// show next content
-			updateParagraph(e.ID)
+			updateParagraph(r.Next())
 		case "k", "<C-p>":
 			// show previous content
-			updateParagraph(e.ID)
+			updateParagraph(r.Prev())
 		}
 
 		ui.Render(p)

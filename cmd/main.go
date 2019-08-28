@@ -3,20 +3,36 @@ package main
 import (
 	"fmt"
 	"os"
+	"path/filepath"
+	"strings"
 
 	"github.com/TimothyYe/glance/core"
 	"github.com/TimothyYe/glance/reader"
 )
 
+var (
+	r reader.GeneralReader
+)
+
 func main() {
-	r := reader.NewTxtReader()
-	if err := r.Load("/Users/timothy.ye/Downloads/dmbj.txt"); err != nil {
-		fmt.Println(err)
+	if len(os.Args) == 1 {
+		fmt.Println("Please input file name")
+	}
+
+	ext := strings.ToUpper(filepath.Ext(os.Args[1]))
+
+	// create reader
+	switch ext {
+	case ".TXT":
+		r = reader.GeneralReader(reader.NewTxtReader())
+		if err := r.Load(os.Args[1]); err != nil {
+			fmt.Println(err)
+			os.Exit(1)
+		}
+	default:
+		fmt.Println("File format not supported!")
 		os.Exit(1)
 	}
 
-	fmt.Println(r.Current())
-
-	core.Init()
-	core.HandleEvents()
+	core.Init(r)
 }
