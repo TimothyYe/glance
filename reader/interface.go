@@ -1,7 +1,7 @@
 package reader
 
 type GeneralReader interface {
-	Load(path string) int
+	Load(path string) error
 	Current() string
 	Next() string
 	Prev() string
