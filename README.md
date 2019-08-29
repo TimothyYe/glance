@@ -1,5 +1,7 @@
 # Glance
-![](https://github.com/TimothyYe/glance/blob/master/demo/glance.png?raw=true)
+
+<img src="https://github.com/TimothyYe/glance/blob/master/demo/glance.png?raw=true" width="150" />
+
 一款基于命令行跨平台文本小说阅读工具，996与10107程序员摸鱼划水必备神器。
 
 ![gif demo](#)
