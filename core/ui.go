@@ -24,6 +24,10 @@ func updateParagraph(key string) {
 	p.Text = key
 }
 
+func switchColor() {
+	p.TextStyle.Fg = ui.Color( color % 8)
+}
+
 func displayHelp(current string) {
 	showHelp = !showHelp
 	if showHelp {

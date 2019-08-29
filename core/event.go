@@ -5,6 +5,9 @@ import (
 	ui "github.com/gizak/termui/v3"
 )
 
+var (
+	color= 0
+)
 
 func handleEvents() {
 	uiEvents := ui.PollEvents()
@@ -82,6 +85,8 @@ func handleEvents() {
 				rowNumber = "g"
 			}
 		case "c":
+			color++
+			switchColor()
 			// change color
 		case "0","1","2","3","4","5","6","7","8","9":
 			// jump to rows
