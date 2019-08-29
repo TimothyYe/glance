@@ -18,7 +18,7 @@ func updateParagraph(key string) {
 func displayHelp(current string) {
 	showHelp = !showHelp
 	if showHelp {
-		p.Text = "[↑]:j [↓]:k [b]:Boss Key [g]:Show/Hide Grid, [q]:Quit"
+		p.Text = menuText
 	} else {
 		p.Text = current
 	}
@@ -38,17 +38,16 @@ func displayProgress(current, progress string) {
 	}
 }
 
-func displayBossKey() {
+func displayBossKey(current string) {
 	bossKey = !bossKey
 	if bossKey {
 		p.Border = false
-		p.Text = "[root@localhost]$"
+		p.Text = fakeShell
 	} else {
-		p.Text = ""
+		p.Text = current
 	}
 }
 
-// handleEvents handles all the keyboard events
 func handleEvents() {
 	uiEvents := ui.PollEvents()
 	defer ui.Close()
@@ -67,7 +66,7 @@ func handleEvents() {
 			displayBorder()
 		case "b":
 			// boss key
-			displayBossKey()
+			displayBossKey(r.Current())
 		case "q", "<C-c>":
 			// quit
 			return

@@ -22,11 +22,11 @@ func Init(gr reader.GeneralReader) {
 		log.Fatalf("failed to initialize termui: %v", err)
 	}
 
-	_, height := ui.TerminalDimensions()
+	//_, height := ui.TerminalDimensions()
 	width := 83
 
 	p = widgets.NewParagraph()
-	p.Text = fmt.Sprintf("%d,%d", width, height)
+	p.Text = fmt.Sprintf(r.Current())
 	p.SetRect(0, 0, width, 3)
 	p.TextStyle.Fg = ui.ColorWhite
 	p.BorderStyle.Fg = ui.ColorCyan
