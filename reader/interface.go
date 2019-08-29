@@ -5,6 +5,8 @@ type GeneralReader interface {
 	Current() string
 	Next() string
 	Prev() string
+	First() string
+	Last() string
 	CurrentPos() int
 	Goto(pos int) string
 	GetProgress() string

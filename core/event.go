@@ -56,14 +56,14 @@ func handleEvents() {
 				if num, err := lib.ParseRowNum(rowNumber); err != nil {
 					updateParagraph(err.Error())
 				} else {
-					updateParagraph(r.Goto(r.CurrentPos() - num))
+					updateParagraph(r.Goto(r.CurrentPos() + 1 - num))
 				}
 				rowNumber = ""
 			}
 		case "G":
 			// jump to the specified row
 			 if rowNumber == "" {
-				 updateParagraph("Invalid row number!")
+			 	updateParagraph(r.Last())
 			 } else {
 				// parse the row number
 				if num, err := lib.ParseRowNum(rowNumber); err != nil {
@@ -72,6 +72,14 @@ func handleEvents() {
 					updateParagraph(r.Goto(num))
 				}
 				rowNumber = ""
+			}
+		case "g":
+			if rowNumber == "g" {
+				// jump to the first row
+				updateParagraph(r.First())
+				rowNumber = ""
+			} else {
+				rowNumber = "g"
 			}
 		case "c":
 			// change color
