@@ -4,7 +4,7 @@
 
 一款基于命令行跨平台文本小说阅读工具，996与10107程序员摸鱼划水必备神器。
 
-![gif demo](#)
+![](https://github.com/TimothyYe/glance/blob/master/demo/demo.gif?raw=true)
 
 [English Version](#)
 
@@ -52,9 +52,16 @@ Glance支持与Vim相同的快捷跳转命令，方便在阅读时快速定位�
 Glance可以运行在任何支持Terminal的开发软件及环境中，包括并不仅限于JetBrains全家桶, Vim, Tmux, Emacs……
 
 * GoLand
+![](https://github.com/TimothyYe/glance/blob/master/demo/goland.png?raw=true)
+
 * Spacemacs
+![](https://github.com/TimothyYe/glance/blob/master/demo/spacemacs.png?raw=true)
+
 * VSCode
+![](https://github.com/TimothyYe/glance/blob/master/demo/vscode.png?raw=true)
+
 * Tmux
+![](https://github.com/TimothyYe/glance/blob/master/demo/tmux.png?raw=true)
 
 ## Issue 与 PR
 
