@@ -24,7 +24,7 @@ brew tap timothyye/tap
 brew install timothyye/tap/glance
 ```
 
-注: 也可以选择[直接下载](#)可执行文件并运行。
+注: 也可以选择[直接下载](https://github.com/TimothyYe/glance/releases)可执行文件并运行。
 
 ## 快捷键说明
 
@@ -35,7 +35,7 @@ brew install timothyye/tap/glance
 * `p` 显示与隐藏当前阅读进度
 * `b` Boss Key，隐藏当前内容并显示伪装Shell提示符
 * `f` 显示与隐藏边框
-* `c` 切换显示字体颜色 (开发中)
+* `c` 切换显示字体颜色
 
 ## 跳转命令
 
