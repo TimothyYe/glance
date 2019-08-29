@@ -64,8 +64,10 @@ func (txt *TxtReader) Current() string {
 func (txt *TxtReader) Next() string {
 	txt.pos++
 
-	if txt.pos < len(txt.content)-1 {
+	if txt.pos <= len(txt.content)-1 {
 		return txt.content[txt.pos]
+	} else {
+		txt.pos = len(txt.content) - 1
 	}
 
 	return "END"
@@ -86,11 +88,11 @@ func (txt *TxtReader) CurrentPos() int {
 }
 
 func (txt *TxtReader) Goto(pos int) string {
-	if pos-1 < 0 || pos > len(txt.content) {
+	if pos < 0 || pos > len(txt.content) - 1 {
 		return txt.content[txt.pos]
 	}
 
-	txt.pos = pos - 1
+	txt.pos = pos
 	return txt.content[txt.pos]
 }
 

@@ -12,7 +12,50 @@ import (
 var (
 	p *widgets.Paragraph
 	r reader.GeneralReader
+
+	showBorder   = false
+	showHelp     = false
+	showProgress = false
+	bossKey      = false
+	rowNumber = ""
 )
+
+func updateParagraph(key string) {
+	p.Text = key
+}
+
+func displayHelp(current string) {
+	showHelp = !showHelp
+	if showHelp {
+		p.Text = menuText
+	} else {
+		p.Text = current
+	}
+}
+
+func displayBorder() {
+	showBorder = !showBorder
+	p.Border = showBorder
+}
+
+func displayProgress(current, progress string) {
+	showProgress = !showProgress
+	if showProgress {
+		p.Text = progress
+	} else {
+		p.Text = current
+	}
+}
+
+func displayBossKey(current string) {
+	bossKey = !bossKey
+	if bossKey {
+		p.Border = false
+		p.Text = fakeShell
+	} else {
+		p.Text = current
+	}
+}
 
 // Init ui & components
 func Init(gr reader.GeneralReader) {

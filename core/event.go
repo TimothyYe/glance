@@ -1,52 +1,10 @@
 package core
 
 import (
+	"github.com/TimothyYe/glance/lib"
 	ui "github.com/gizak/termui/v3"
 )
 
-var (
-	showBorder   = false
-	showHelp     = false
-	showProgress = false
-	bossKey      = false
-)
-
-func updateParagraph(key string) {
-	p.Text = key
-}
-
-func displayHelp(current string) {
-	showHelp = !showHelp
-	if showHelp {
-		p.Text = menuText
-	} else {
-		p.Text = current
-	}
-}
-
-func displayBorder() {
-	showBorder = !showBorder
-	p.Border = showBorder
-}
-
-func displayProgress(current, progress string) {
-	showProgress = !showProgress
-	if showProgress {
-		p.Text = progress
-	} else {
-		p.Text = current
-	}
-}
-
-func displayBossKey(current string) {
-	bossKey = !bossKey
-	if bossKey {
-		p.Border = false
-		p.Text = fakeShell
-	} else {
-		p.Text = current
-	}
-}
 
 func handleEvents() {
 	uiEvents := ui.PollEvents()
@@ -70,12 +28,57 @@ func handleEvents() {
 		case "q", "<C-c>":
 			// quit
 			return
-		case "j", "<C-n>":
+		case "<C-n>":
 			// show next content
 			updateParagraph(r.Next())
-		case "k", "<C-p>":
+		case "<C-p>":
 			// show previous content
 			updateParagraph(r.Prev())
+		case "j":
+			if rowNumber == "" {
+				// show next content
+				updateParagraph(r.Next())
+			} else {
+				// parse the row number
+				if num, err := lib.ParseRowNum(rowNumber); err != nil {
+					updateParagraph(err.Error())
+				} else {
+					updateParagraph(r.Goto(r.CurrentPos() + num))
+				}
+				rowNumber = ""
+			}
+		case "k":
+			if rowNumber == "" {
+				// show previous content
+				updateParagraph(r.Prev())
+			} else {
+				// parse the row number
+				if num, err := lib.ParseRowNum(rowNumber); err != nil {
+					updateParagraph(err.Error())
+				} else {
+					updateParagraph(r.Goto(r.CurrentPos() - num))
+				}
+				rowNumber = ""
+			}
+		case "G":
+			// jump to the specified row
+			 if rowNumber == "" {
+				 updateParagraph("Invalid row number!")
+			 } else {
+				// parse the row number
+				if num, err := lib.ParseRowNum(rowNumber); err != nil {
+					updateParagraph(err.Error())
+				} else {
+					updateParagraph(r.Goto(num))
+				}
+				rowNumber = ""
+			}
+		case "c":
+			// change color
+		case "0","1","2","3","4","5","6","7","8","9":
+			// jump to rows
+			rowNumber += e.ID
+			updateParagraph(rowNumber)
 		}
 
 		ui.Render(p)
