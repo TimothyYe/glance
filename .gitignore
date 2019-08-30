@@ -12,3 +12,4 @@
 *.out
 cmd/cmd
 cmd/glance
+.DS_Store

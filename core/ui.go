@@ -18,6 +18,7 @@ var (
 	showProgress = false
 	bossKey      = false
 	rowNumber = ""
+	color= 0
 )
 
 func updateParagraph(key string) {

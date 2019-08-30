@@ -5,10 +5,6 @@ import (
 	ui "github.com/gizak/termui/v3"
 )
 
-var (
-	color= 0
-)
-
 func handleEvents() {
 	uiEvents := ui.PollEvents()
 	defer ui.Close()
