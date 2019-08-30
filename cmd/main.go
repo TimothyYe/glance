@@ -11,12 +11,14 @@ import (
 )
 
 var (
-	r reader.GeneralReader
+	r       reader.GeneralReader
+	Version string
 )
 
 func main() {
 	if len(os.Args) == 1 {
-		fmt.Println("Please input file name")
+		fmt.Println("Please input the file name")
+		os.Exit(1)
 	}
 
 	ext := strings.ToUpper(filepath.Ext(os.Args[1]))
