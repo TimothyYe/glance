@@ -19,7 +19,7 @@ func handleEvents() {
 			// show progress
 			displayProgress(r.Current(), r.GetProgress())
 		case "f":
-			// show border
+			// show frame
 			displayBorder()
 		case "b":
 			// boss key
@@ -61,9 +61,9 @@ func handleEvents() {
 			}
 		case "G":
 			// jump to the specified row
-			 if rowNumber == "" {
-			 	updateParagraph(r.Last())
-			 } else {
+			if rowNumber == "" {
+				updateParagraph(r.Last())
+			} else {
 				// parse the row number
 				if num, err := lib.ParseRowNum(rowNumber); err != nil {
 					updateParagraph(err.Error())
@@ -84,7 +84,10 @@ func handleEvents() {
 			color++
 			switchColor()
 			// change color
-		case "0","1","2","3","4","5","6","7","8","9":
+		case "t":
+			// timer
+			setTimer()
+		case "0", "1", "2", "3", "4", "5", "6", "7", "8", "9":
 			// jump to rows
 			rowNumber += e.ID
 			updateParagraph(rowNumber)

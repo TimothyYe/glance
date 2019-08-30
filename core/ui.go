@@ -3,6 +3,7 @@ package core
 import (
 	"fmt"
 	"log"
+	"time"
 
 	"github.com/TimothyYe/glance/reader"
 	ui "github.com/gizak/termui/v3"
@@ -10,23 +11,41 @@ import (
 )
 
 var (
-	p *widgets.Paragraph
-	r reader.GeneralReader
+	p      *widgets.Paragraph
+	r      reader.GeneralReader
+	ticker *time.Ticker
 
 	showBorder   = false
 	showHelp     = false
 	showProgress = false
 	bossKey      = false
-	rowNumber = ""
-	color= 0
+	timer        = false
+	rowNumber    = ""
+	color        = 0
 )
+
+func setTimer() {
+	timer = !timer
+
+	if timer {
+		ticker = time.NewTicker(3500 * time.Millisecond)
+		go func() {
+			for _ = range ticker.C {
+				p.Text = r.Next()
+				ui.Render(p)
+			}
+		}()
+	} else {
+		ticker.Stop()
+	}
+}
 
 func updateParagraph(key string) {
 	p.Text = key
 }
 
 func switchColor() {
-	p.TextStyle.Fg = ui.Color( color % 8)
+	p.TextStyle.Fg = ui.Color(color % 8)
 }
 
 func displayHelp(current string) {
