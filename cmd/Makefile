@@ -17,11 +17,6 @@ release:
 		go clean
 		CGO_ENABLED=0 GOOS=linux GOARCH=amd64 GO111MODULE=on go build -o ${BINARY} -ldflags "-s -w -X main.Version=${VERSION}"
 		tar czvf ${BINARY}-linux64-${VERSION}.tar.gz ./${BINARY}
-		# Build for win
-		go clean
-		CGO_ENABLED=0 GOOS=windows GOARCH=amd64 GO111MODULE=on go build -o ${BINARY}.exe -ldflags "-s -w -X main.Version=${VERSION}"
-		tar czvf ${BINARY}-win64-${VERSION}.tar.gz ./${BINARY}.exe
-		go clean
 # Cleans our projects: deletes binaries
 clean:
 		go clean

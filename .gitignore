@@ -13,3 +13,4 @@
 cmd/cmd
 cmd/glance
 .DS_Store
+cmd/*.tar.gz
