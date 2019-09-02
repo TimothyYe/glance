@@ -33,7 +33,7 @@ func handleEvents() {
 		case "<C-p>":
 			// show previous content
 			updateParagraph(r.Prev())
-		case "j":
+		case "j", "<Space>", "<Enter>":
 			if rowNumber == "" {
 				// show next content
 				updateParagraph(r.Next())
