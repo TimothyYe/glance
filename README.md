@@ -10,7 +10,7 @@
 
 ## 功能亮点
 
-* 使用Go开发，无需额外运行时和依赖库，下载即可跨平台运行。
+* 使用Go开发，无需额外运行时和依赖库。
 * 软件运行于命令行，对Vimer友好，支持Vim方式的Key Binding进行翻页和跳转。
 * 支持Boss Key，方便紧急情况下对界面隐藏和伪装。
 * 支持自动定时翻页模式
@@ -25,6 +25,11 @@ brew install timothyye/tap/glance
 ```
 
 注: 也可以选择[直接下载](https://github.com/TimothyYe/glance/releases)可执行文件并运行。
+
+## 支持平台
+* Mac OS
+* Linux
+* Windows (计划中)
 
 ## 支持格式
 * TXT (已支持)
