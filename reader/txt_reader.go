@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+	"strings"
 )
 
 type TxtReader struct {
@@ -45,8 +46,12 @@ func (txt *TxtReader) Load(path string) error {
 
 		if line == "\n" {
 			if buffer.Len() > 0 {
-				txt.content = append(txt.content, buffer.String())
-				buffer.Reset()
+				if strings.TrimSpace(buffer.String()) != "" {
+					txt.content = append(txt.content, buffer.String())
+					buffer.Reset()
+				} else {
+					buffer.Reset()
+				}
 			}
 		} else {
 			buffer.Write(r.Bytes())
@@ -90,7 +95,7 @@ func (txt *TxtReader) First() string {
 
 func (txt *TxtReader) Last() string {
 	txt.pos = len(txt.content) - 1
-	return txt.content[len(txt.content ) - 1]
+	return txt.content[len(txt.content)-1]
 }
 
 func (txt *TxtReader) CurrentPos() int {
@@ -102,7 +107,7 @@ func (txt *TxtReader) Goto(pos int) string {
 		pos = 0
 	}
 
-	if pos > len(txt.content) - 1 {
+	if pos > len(txt.content)-1 {
 		pos = len(txt.content) - 1
 	}
 
