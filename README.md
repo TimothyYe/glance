@@ -26,6 +26,11 @@ brew install timothyye/tap/glance
 
 注: 也可以选择[直接下载](https://github.com/TimothyYe/glance/releases)可执行文件并运行。
 
+## 支持平台
+* Mac OS
+* Linux
+* Windows (计划中)
+
 ## 支持格式
 * TXT (已支持)
 * PDF (计划中)
