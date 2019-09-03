@@ -40,7 +40,7 @@ brew install timothyye/tap/glance
 
 * `?` 显示与隐藏帮助菜单
 * `q` 或者 `ctrl+c` 退出程序
-* `j` 或者 `ctrl+n` 显示下一行内容
+* `j`, `ctrl+n`, `<Space>` 或者 `<Enter>` 显示下一行内容
 * `k` 或者 `ctrl+p` 显示上一行内容
 * `p` 显示与隐藏当前阅读进度
 * `b` Boss Key，隐藏当前内容并显示伪装Shell提示符
