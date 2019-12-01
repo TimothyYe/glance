@@ -89,7 +89,7 @@ func Init(gr reader.Reader) {
 	}
 
 	//_, height := ui.TerminalDimensions()
-	width := 83
+	width := fixedWidth
 
 	p = widgets.NewParagraph()
 	p.Text = r.Current()
