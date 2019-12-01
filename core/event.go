@@ -83,8 +83,8 @@ func handleEvents() {
 			}
 		case "c":
 			color++
-			switchColor()
 			// change color
+			switchColor()
 		case "t":
 			// timer
 			setTimer()
