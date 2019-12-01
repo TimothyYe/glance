@@ -27,7 +27,7 @@ func setTimer() {
 	timer = !timer
 
 	if timer {
-		ticker = time.NewTicker(3500 * time.Millisecond)
+		ticker = time.NewTicker(interval * time.Millisecond)
 		go func() {
 			for range ticker.C {
 				p.Text = r.Next()
