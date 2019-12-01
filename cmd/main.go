@@ -39,7 +39,7 @@ func main() {
 			os.Exit(1)
 		}
 	default:
-		fmt.Println("File format not supported!")
+		fmt.Println("Unsupported file format!")
 		os.Exit(1)
 	}
 
