@@ -62,6 +62,7 @@ func handleEvents() {
 		case "G":
 			// jump to the specified row
 			if rowNumber == "" {
+				// jump to the last row
 				updateParagraph(r.Last())
 			} else {
 				// parse the row number

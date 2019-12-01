@@ -1,7 +1,6 @@
 package core
 
 import (
-	"fmt"
 	"log"
 	"time"
 
@@ -30,7 +29,7 @@ func setTimer() {
 	if timer {
 		ticker = time.NewTicker(3500 * time.Millisecond)
 		go func() {
-			for _ = range ticker.C {
+			for range ticker.C {
 				p.Text = r.Next()
 				ui.Render(p)
 			}
@@ -93,7 +92,7 @@ func Init(gr reader.GeneralReader) {
 	width := 83
 
 	p = widgets.NewParagraph()
-	p.Text = fmt.Sprintf(r.Current())
+	p.Text = r.Current()
 	p.SetRect(0, 0, width, 3)
 	p.TextStyle.Fg = ui.ColorWhite
 	p.BorderStyle.Fg = ui.ColorCyan
