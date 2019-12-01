@@ -85,7 +85,7 @@ func Init(gr reader.Reader) {
 	r = gr
 
 	if err := ui.Init(); err != nil {
-		log.Fatalf("failed to initialize termui: %v", err)
+		log.Fatalf("failed to initialize the termui: %v", err)
 	}
 
 	//_, height := ui.TerminalDimensions()

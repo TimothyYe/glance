@@ -19,12 +19,12 @@ var (
 
 func main() {
 	if len(os.Args) == 1 {
-		fmt.Println("Please input the file name")
+		fmt.Println("Please input the filename")
 		os.Exit(1)
 	}
 
 	if len(os.Args) == 2 && os.Args[1] == "-v" {
-		lib.Display(Version)
+		lib.DisplayVersion(Version)
 		os.Exit(0)
 	}
 

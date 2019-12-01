@@ -10,6 +10,6 @@ https://github.com/TimothyYe/glance
 `
 )
 
-func Display(version string) {
+func DisplayVersion(version string) {
 	fmt.Printf(Logo, version)
 }
