@@ -11,7 +11,7 @@ import (
 
 var (
 	p      *widgets.Paragraph
-	r      reader.GeneralReader
+	r      reader.Reader
 	ticker *time.Ticker
 
 	showBorder   = false
@@ -81,7 +81,7 @@ func displayBossKey(current string) {
 }
 
 // Init ui & components
-func Init(gr reader.GeneralReader) {
+func Init(gr reader.Reader) {
 	r = gr
 
 	if err := ui.Init(); err != nil {

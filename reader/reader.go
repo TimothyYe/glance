@@ -1,6 +1,6 @@
 package reader
 
-type GeneralReader interface {
+type Reader interface {
 	Load(path string) error
 	Current() string
 	Next() string

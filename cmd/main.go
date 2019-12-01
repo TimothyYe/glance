@@ -13,7 +13,7 @@ import (
 )
 
 var (
-	r       reader.GeneralReader
+	r       reader.Reader
 	Version string
 )
 
@@ -33,7 +33,7 @@ func main() {
 	// create reader
 	switch ext {
 	case ".TXT":
-		r = reader.GeneralReader(reader.NewTxtReader())
+		r = reader.Reader(reader.NewTxtReader())
 		if err := r.Load(os.Args[1]); err != nil {
 			fmt.Println(err)
 			os.Exit(1)
