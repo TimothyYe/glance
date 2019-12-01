@@ -13,13 +13,13 @@ func handleEvents() {
 		e := <-uiEvents
 		switch e.ID {
 		case "?":
-			// show help menu
+			// show the help menu
 			displayHelp(r.Current())
 		case "p":
-			// show progress
+			// show the progress
 			displayProgress(r.Current(), r.GetProgress())
 		case "f":
-			// show frame
+			// show the frame
 			displayBorder()
 		case "b":
 			// boss key
@@ -28,14 +28,14 @@ func handleEvents() {
 			// quit
 			return
 		case "<C-n>":
-			// show next content
+			// show the next content
 			updateParagraph(r.Next())
 		case "<C-p>":
-			// show previous content
+			// show the previous content
 			updateParagraph(r.Prev())
 		case "j", "<Space>", "<Enter>":
 			if rowNumber == "" {
-				// show next content
+				// show the next content
 				updateParagraph(r.Next())
 			} else {
 				// parse the row number
@@ -48,7 +48,7 @@ func handleEvents() {
 			}
 		case "k":
 			if rowNumber == "" {
-				// show previous content
+				// show the previous content
 				updateParagraph(r.Prev())
 			} else {
 				// parse the row number
@@ -83,7 +83,7 @@ func handleEvents() {
 			}
 		case "c":
 			color++
-			// change color
+			// change front color
 			switchColor()
 		case "t":
 			// timer
