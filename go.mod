@@ -1,6 +1,6 @@
 module github.com/TimothyYe/glance
 
-go 1.26
+go 1.24
 
 require github.com/gizak/termui/v3 v3.1.0
 
