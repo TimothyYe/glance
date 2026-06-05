@@ -110,9 +110,8 @@ func (txt *TxtReader) Next() string {
 
 	if txt.pos <= len(txt.content)-1 {
 		return txt.content[txt.pos]
-	} else {
-		txt.pos = len(txt.content) - 1
 	}
+	txt.pos = len(txt.content) - 1
 
 	return "END"
 }

@@ -1,0 +1,17 @@
+linters:
+  disable-all: true
+  enable:
+    - dupl
+    - godot
+    - goimports
+    - gosimple
+    - govet
+    - ineffassign
+    - misspell
+    - revive
+    - staticcheck
+    - typecheck
+    - unused
+
+run:
+  timeout: 5m

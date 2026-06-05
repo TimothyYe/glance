@@ -80,7 +80,7 @@ func displayBossKey(current string) {
 	}
 }
 
-// Init ui & components
+// Init ui & components.
 func Init(gr reader.Reader) {
 	r = gr
 

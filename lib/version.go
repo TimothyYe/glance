@@ -3,7 +3,7 @@ package lib
 import "fmt"
 
 var (
-	// Logo
+	// Logo.
 	Logo = `
 Glance V%s
 https://github.com/TimothyYe/glance
